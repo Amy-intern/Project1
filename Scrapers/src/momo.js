@@ -51,7 +51,7 @@ const momoCrawler = new PlaywrightCrawler({
 });
 
 await momoCrawler.run([
-    'https://www.momoshop.com.tw/search/searchShop.jsp?keyword=Nike&searchType=1&curPage=1&_isFuzzy=0&showType=chessboardType&isBrandCategory=N&serviceCode=MT01'
+    'https://www.momoshop.com.tw/search/searchShop.jsp?keyword=nike%20t%20shirt&searchType=1&curPage=1&_isFuzzy=0&showType=chessboardType&isBrandCategory=N&serviceCode=MT01'
 ]);
 
 const dataset = await Dataset.open();
