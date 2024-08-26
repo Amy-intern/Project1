@@ -10,25 +10,37 @@
 #   universal: false
 
 -e file:.
+certifi==2024.7.4
+    # via requests
+charset-normalizer==3.3.2
+    # via requests
 contourpy==1.2.1
     # via matplotlib
 cycler==0.12.1
     # via matplotlib
 fonttools==4.53.1
     # via matplotlib
+idna==3.8
+    # via requests
+imagehash==4.3.1
+    # via momo-processing
 kiwisolver==1.4.5
     # via matplotlib
 matplotlib==3.9.2
     # via momo-processing
 numpy==2.0.1
     # via contourpy
+    # via imagehash
     # via matplotlib
     # via pandas
+    # via pywavelets
+    # via scipy
 packaging==24.1
     # via matplotlib
 pandas==2.2.2
     # via momo-processing
 pillow==10.4.0
+    # via imagehash
     # via matplotlib
 pyparsing==3.1.2
     # via matplotlib
@@ -37,7 +49,15 @@ python-dateutil==2.9.0.post0
     # via pandas
 pytz==2024.1
     # via pandas
+pywavelets==1.7.0
+    # via imagehash
+requests==2.32.3
+    # via momo-processing
+scipy==1.14.1
+    # via imagehash
 six==1.16.0
     # via python-dateutil
 tzdata==2024.1
     # via pandas
+urllib3==2.2.2
+    # via requests
