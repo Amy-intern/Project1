@@ -9,7 +9,7 @@ import imagehash
 momo = "C:/Users/aimee/Documents/Workspace/Project 1/Scrapers/storage/key_value_stores/default/results.csv"
 print(momo)
 list_of_platforms = [momo]
-official_brand_name = "NIKE 耐吉"
+official_brand_name = "NIKE"
 
 plt.rc('font', family='Microsoft JhengHei')
 
@@ -22,6 +22,13 @@ def fetch_image_from_url(url):
 def compute_image_hash(image):
     #Gets perceptual hash of a PIL image.
     return imagehash.phash(image)
+
+def is_similar(hash1, hash2):
+    # Checks similarity
+    if hash1 - hash2 <= 5:
+        return True
+    else:
+        return False
 
 def counting_brands(csv_name):
     count_brands = {}
@@ -45,10 +52,12 @@ def counting_brands(csv_name):
 
                 # Groups images by p-hash
                 hash_key = str(image_hash)
-                if hash_key in image_hashes:
-                    image_hashes[hash_key].append(image_url)
-                else:
-                    image_hashes[hash_key] = [image_url]
+                
+                for i in image_hashes:
+                    if is_similar(image_hash, i):
+                        image_hashes[hash_key].append(image_url)
+                    else:
+                        image_hashes[hash_key].append(image_url)
 
                 # Counts images by product name
                 if entry['product_name'] in count_images:
