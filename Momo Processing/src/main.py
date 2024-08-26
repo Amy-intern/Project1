@@ -14,13 +14,13 @@ official_brand_name = "NIKE 耐吉"
 plt.rc('font', family='Microsoft JhengHei')
 
 def fetch_image_from_url(url):
-    #Get Pil image from url
+    #Gets Pil image from url
     response = requests.get(url)
-    image_data = BytesIO(response.content)
+    image_data = BytesIO(response.content) #gets content of the image
     return Image.open(image_data)
 
 def compute_image_hash(image):
-    #Get perceptual hash of a PIL image.
+    #Gets perceptual hash of a PIL image.
     return imagehash.phash(image)
 
 def counting_brands(csv_name):
@@ -37,20 +37,20 @@ def counting_brands(csv_name):
                 else:
                     count_brands[entry['brand']] = 1
                 
-                #Get hashes
+                #Get shashes
                 image_url = entry['image']
                 
                 image = fetch_image_from_url(image_url)
                 image_hash = compute_image_hash(image)
 
-                # Group images by p-hash
+                # Groups images by p-hash
                 hash_key = str(image_hash)
                 if hash_key in image_hashes:
                     image_hashes[hash_key].append(image_url)
                 else:
                     image_hashes[hash_key] = [image_url]
 
-                # Count images by product names
+                # Counts images by product name
                 if entry['product_name'] in count_images:
                     count_images[entry['product_name']].append(image_url)
                 else:
@@ -59,7 +59,6 @@ def counting_brands(csv_name):
     # Convert image counts by product name
     count_images = {k: len(v) for k, v in count_images.items()}
 
-    # brand counts
     plt.bar(count_brands.keys(), count_brands.values())
     plt.xlabel('Brands')
     plt.ylabel('Number of Results')
@@ -67,7 +66,6 @@ def counting_brands(csv_name):
     plt.tight_layout()
     plt.show()
     
-    # Product name counts
     plt.figure(figsize=(13, 8))
     plt.barh(count_images.keys(), count_images.values())
     plt.ylabel('Product Names')
