@@ -9,7 +9,7 @@ import imagehash
 momo = "C:/Users/aimee/Documents/Workspace/Project 1/Scrapers/storage/key_value_stores/default/results.csv"
 print(momo)
 list_of_platforms = [momo]
-official_brand_name = "NIKE"
+official_brand_name = "NIKE 耐吉"
 
 plt.rc('font', family='Microsoft JhengHei')
 
